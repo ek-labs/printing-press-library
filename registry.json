@@ -1689,6 +1689,15 @@
       }
     },
     {
+      "name": "mt5",
+      "category": "trading",
+      "api": "MetaTrader 5",
+      "description": "MetaTrader 5 from the shell: live quotes, positions, orders, history, deals, trading stats (Sharpe/DD/win-rate/R-multiples), tick/bar export, replay, event-loop backtest. Python bridge + local SQLite mirror so most reads answer in microseconds. Every write is dry-run + SHA-256 hash + live-mode gate (MT5_LIVE env AND --i-understand-this-is-live flag). Windows-only for live; mirror commands work everywhere.",
+      "path": "library/trading/mt5",
+      "printer": "mvanhorn",
+      "printer_name": "Matt Van Horn"
+    },
+    {
       "name": "mt5-backtester",
       "category": "finance",
       "api": "MetaTrader 5 Strategy Tester",
