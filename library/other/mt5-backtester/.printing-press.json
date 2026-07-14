@@ -1,11 +1,16 @@
 {
   "schema_version": 1,
+  "generated_at": "2026-07-14T12:15:00Z",
+  "printing_press_version": "hand-built-1.0",
   "api_name": "mt5-backtester",
   "display_name": "MT5 Backtester",
   "cli_name": "mt5-backtester-pp-cli",
+  "category": "other",
+  "run_id": "20260714-121500",
   "owner": "ek-labs",
   "printer": "ek-labs",
   "printer_name": "ek-labs",
+  "provenance_note": "Hand-built by ek-labs following printing-press conventions; not generator output. run_id keys the .manuscripts bundle documenting the build and its verification.",
   "spec_format": "internal",
   "auth_type": "none",
   "novel_features": [

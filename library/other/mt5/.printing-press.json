@@ -1,12 +1,20 @@
 {
   "schema_version": 1,
+  "generated_at": "2026-07-14T12:00:00Z",
+  "printing_press_version": "hand-built-1.0",
   "api_name": "mt5",
   "display_name": "MetaTrader 5",
   "cli_name": "mt5-pp-cli",
+  "category": "other",
+  "run_id": "20260714-120000",
   "owner": "ek-labs",
   "printer": "ek-labs",
   "printer_name": "ek-labs",
+  "provenance_note": "Hand-built by ek-labs following printing-press conventions; not generator output. run_id keys the .manuscripts bundle documenting the build and its verification.",
   "spec_format": "internal",
+  "mcp_binary": "mt5-pp-mcp",
+  "mcp_tool_count": 18,
+  "mcp_ready": "full",
   "auth_type": "broker_login",
   "auth_env_vars": [
     "MT5_PASSWORD"

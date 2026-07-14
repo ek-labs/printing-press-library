@@ -658,11 +658,11 @@ type StreaksOut struct {
 }
 
 type tradeRow struct {
-	ID        int64
-	LastMS    int64
-	PnL       float64
-	Symbol    string
-	Magic     int64
+	ID     int64
+	LastMS int64
+	PnL    float64
+	Symbol string
+	Magic  int64
 }
 
 func loadTradeTimeline(ctx context.Context, db *sql.DB, acct, fromMS, toMS int64) ([]tradeRow, error) {
@@ -854,24 +854,24 @@ func newStatsDrawdownCmd() *cobra.Command {
 }
 
 type DrawdownPeriod struct {
-	PeakMS        int64   `json:"peak_ms"`
-	TroughMS      int64   `json:"trough_ms"`
-	RecoveryMS    int64   `json:"recovery_ms"` // 0 if still open
-	PeakEquity    float64 `json:"peak_equity"`
-	TroughEquity  float64 `json:"trough_equity"`
-	Depth         float64 `json:"depth"`
-	DepthPct      float64 `json:"depth_pct"`
-	DurationToTrough  int64 `json:"duration_to_trough_days"`
-	DurationToRecover int64 `json:"duration_to_recover_days"` // -1 if not recovered
-	StillOpen     bool    `json:"still_open"`
+	PeakMS            int64   `json:"peak_ms"`
+	TroughMS          int64   `json:"trough_ms"`
+	RecoveryMS        int64   `json:"recovery_ms"` // 0 if still open
+	PeakEquity        float64 `json:"peak_equity"`
+	TroughEquity      float64 `json:"trough_equity"`
+	Depth             float64 `json:"depth"`
+	DepthPct          float64 `json:"depth_pct"`
+	DurationToTrough  int64   `json:"duration_to_trough_days"`
+	DurationToRecover int64   `json:"duration_to_recover_days"` // -1 if not recovered
+	StillOpen         bool    `json:"still_open"`
 }
 
 type DrawdownsOut struct {
-	Periods          []DrawdownPeriod `json:"periods"`
-	MaxDepth         float64          `json:"max_depth"`
-	MaxDepthPct      float64          `json:"max_depth_pct"`
-	OpenDrawdown     *DrawdownPeriod  `json:"open_drawdown,omitempty"`
-	TradesInWindow   int              `json:"trades_in_window"`
+	Periods        []DrawdownPeriod `json:"periods"`
+	MaxDepth       float64          `json:"max_depth"`
+	MaxDepthPct    float64          `json:"max_depth_pct"`
+	OpenDrawdown   *DrawdownPeriod  `json:"open_drawdown,omitempty"`
+	TradesInWindow int              `json:"trades_in_window"`
 }
 
 func computeDrawdowns(trades []tradeRow) *DrawdownsOut {
@@ -894,14 +894,14 @@ func computeDrawdowns(trades []tradeRow) *DrawdownsOut {
 				dur := (t.LastMS - open.PeakMS) / 1000 / 86400
 				troughDays := (open.TroughMS - open.PeakMS) / 1000 / 86400
 				p := DrawdownPeriod{
-					PeakMS:           open.PeakMS,
-					TroughMS:         open.TroughMS,
-					RecoveryMS:       t.LastMS,
-					PeakEquity:       open.PeakEq,
-					TroughEquity:     open.TroughEq,
-					Depth:            open.PeakEq - open.TroughEq,
-					DepthPct:         pctOfPeak(open.PeakEq, open.TroughEq),
-					DurationToTrough: troughDays,
+					PeakMS:            open.PeakMS,
+					TroughMS:          open.TroughMS,
+					RecoveryMS:        t.LastMS,
+					PeakEquity:        open.PeakEq,
+					TroughEquity:      open.TroughEq,
+					Depth:             open.PeakEq - open.TroughEq,
+					DepthPct:          pctOfPeak(open.PeakEq, open.TroughEq),
+					DurationToTrough:  troughDays,
 					DurationToRecover: dur,
 				}
 				out.Periods = append(out.Periods, p)
@@ -995,9 +995,9 @@ func printDrawdowns(w io.Writer, v any) {
 
 func newRMultiplesCmd() *cobra.Command {
 	var (
-		since         string
-		riskPerTrade  float64
-		balance       float64
+		since        string
+		riskPerTrade float64
+		balance      float64
 	)
 	cmd := &cobra.Command{
 		Use:   "r-multiples",
@@ -1447,15 +1447,15 @@ func newMagicCmd() *cobra.Command {
 }
 
 type MagicRow struct {
-	Magic      int64   `json:"magic"`
-	Trades     int     `json:"trades"`
-	NetProfit  float64 `json:"net_profit"`
-	WinRate    float64 `json:"win_rate"`
-	FirstMS    int64   `json:"first_ms"`
-	LastMS     int64   `json:"last_ms"`
-	DaysSince  int64   `json:"days_since_last"`
-	Dead       bool    `json:"dead"`
-	Runaway    bool    `json:"runaway"` // recent rolling P&L sharply negative
+	Magic     int64   `json:"magic"`
+	Trades    int     `json:"trades"`
+	NetProfit float64 `json:"net_profit"`
+	WinRate   float64 `json:"win_rate"`
+	FirstMS   int64   `json:"first_ms"`
+	LastMS    int64   `json:"last_ms"`
+	DaysSince int64   `json:"days_since_last"`
+	Dead      bool    `json:"dead"`
+	Runaway   bool    `json:"runaway"` // recent rolling P&L sharply negative
 }
 
 func computeMagicAudit(ctx context.Context, db *sql.DB, acct, fromMS, toMS int64, deadDays int) ([]MagicRow, error) {

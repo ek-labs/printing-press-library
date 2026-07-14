@@ -1,0 +1,28 @@
+{
+  "manifest_version": "0.3",
+  "name": "mt5-pp-mcp",
+  "display_name": "MetaTrader 5",
+  "version": "0.1.0",
+  "description": "MetaTrader 5 account operations, trading stats, and safety-gated writes as MCP tools.",
+  "author": {
+    "name": "ek-labs"
+  },
+  "license": "Apache-2.0",
+  "server": {
+    "type": "binary",
+    "entry_point": "bin/mt5-pp-mcp",
+    "mcp_config": {
+      "command": "${__dirname}/bin/mt5-pp-mcp",
+      "args": [],
+      "env": {}
+    }
+  },
+  "user_config": {},
+  "compatibility": {
+    "claude_desktop": ">=1.0.0",
+    "platforms": [
+      "win32"
+    ]
+  },
+  "notes": "Live tools require a Windows host with MetaTrader 5 and the MetaTrader5 Python package (py -3 -m pip install MetaTrader5). Mirror-backed tools (mt5_sql, mt5_stats_summary, mt5_backtest_*) work on any platform against a previously synced store. Broker credentials are never read by the MCP server; login happens via mt5-pp-cli connect login with --password-env."
+}

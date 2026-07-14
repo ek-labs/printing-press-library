@@ -14,22 +14,22 @@ import (
 // Stats holds all key metrics from a backtest report.
 type Stats struct {
 	// Identity
-	Expert    string
-	Symbol    string
-	Period    string
-	FromDate  string
-	ToDate    string
-	Model     string
-	Deposit   float64
-	Currency  string
+	Expert   string
+	Symbol   string
+	Period   string
+	FromDate string
+	ToDate   string
+	Model    string
+	Deposit  float64
+	Currency string
 
 	// Core results
-	NetProfit       float64
-	GrossProfit     float64
-	GrossLoss       float64
-	ProfitFactor    float64
-	ExpectedPayoff  float64
-	SharpeRatio     float64
+	NetProfit      float64
+	GrossProfit    float64
+	GrossLoss      float64
+	ProfitFactor   float64
+	ExpectedPayoff float64
+	SharpeRatio    float64
 
 	// Drawdown
 	AbsoluteDrawdown float64
@@ -38,18 +38,18 @@ type Stats struct {
 	RelativeDrawdown float64
 
 	// Trade stats
-	TotalTrades    int
-	ShortTrades    int
-	LongTrades     int
-	ProfitTrades   int
-	LossTrades     int
-	LargestWin     float64
-	LargestLoss    float64
-	AvgWin         float64
-	AvgLoss        float64
-	MaxConsecWins  int
-	MaxConsecLoss  int
-	WinRate        float64
+	TotalTrades   int
+	ShortTrades   int
+	LongTrades    int
+	ProfitTrades  int
+	LossTrades    int
+	LargestWin    float64
+	LargestLoss   float64
+	AvgWin        float64
+	AvgLoss       float64
+	MaxConsecWins int
+	MaxConsecLoss int
+	WinRate       float64
 
 	// Balance
 	InitialDeposit float64
@@ -57,10 +57,10 @@ type Stats struct {
 	ReturnPct      float64
 
 	// Quality
-	Bars           int
-	Ticks          int
-	ModelQuality   string
-	ParsedAt       time.Time
+	Bars         int
+	Ticks        int
+	ModelQuality string
+	ParsedAt     time.Time
 }
 
 var (
@@ -85,7 +85,7 @@ var (
 	reMaxConsecWins  = regexp.MustCompile(`(?i)maximum consecutive wins[^<]*<[^>]+>(\d+)`)
 	reMaxConsecLoss  = regexp.MustCompile(`(?i)maximum consecutive losses[^<]*<[^>]+>(\d+)`)
 	reInitDeposit    = regexp.MustCompile(`(?i)initial deposit[^<]*<[^>]+>([^<]+)`)
-	reFinalBalance   = regexp.MustCompile(`(?i)final balance[^<]*<[^>]+>([^<]+)`) 
+	reFinalBalance   = regexp.MustCompile(`(?i)final balance[^<]*<[^>]+>([^<]+)`)
 	reExpert         = regexp.MustCompile(`(?i)expert:\s*<[^>]+>([^<]+)`)
 	reSymbol         = regexp.MustCompile(`(?i)symbol:\s*<[^>]+>([^<]+)`)
 	rePeriod         = regexp.MustCompile(`(?i)period:\s*<[^>]+>([^<]+)`)

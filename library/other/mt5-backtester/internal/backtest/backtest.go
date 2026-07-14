@@ -15,7 +15,7 @@ type RunOptions struct {
 	INIPath      string
 	ReportDir    string
 	Timeout      time.Duration
-	Portable     bool   // Pass /portable flag (uses terminal's own dir for data)
+	Portable     bool // Pass /portable flag (uses terminal's own dir for data)
 	Verbose      bool
 }
 
