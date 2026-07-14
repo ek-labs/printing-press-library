@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/mvanhorn/printing-press-library/library/finance/mt5-backtester/internal/config"
-	"github.com/mvanhorn/printing-press-library/library/finance/mt5-backtester/internal/setfile"
+	"github.com/mvanhorn/printing-press-library/library/other/mt5-backtester/internal/config"
+	"github.com/mvanhorn/printing-press-library/library/other/mt5-backtester/internal/setfile"
 )
 
 func TestParseAndTesterValue(t *testing.T) {
