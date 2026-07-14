@@ -14,10 +14,20 @@
     "mcp_config": {
       "command": "${__dirname}/bin/mt5-pp-mcp",
       "args": [],
-      "env": {}
+      "env": {
+        "MT5_PASSWORD": "${user_config.mt5_password}"
+      }
     }
   },
-  "user_config": {},
+  "user_config": {
+    "mt5_password": {
+      "type": "string",
+      "title": "MT5_PASSWORD",
+      "description": "Sets MT5_PASSWORD for 'mt5-pp-cli connect login --password-env MT5_PASSWORD'. Optional: named profiles in config.toml can point at any env var name instead. The MCP server itself never reads this variable.",
+      "sensitive": true,
+      "required": false
+    }
+  },
   "compatibility": {
     "claude_desktop": ">=1.0.0",
     "platforms": [
